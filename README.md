@@ -6,7 +6,7 @@
 [![CodeFactor](https://www.codefactor.io/repository/github/gofunky/cssauron-noeval/badge)](https://www.codefactor.io/repository/github/gofunky/cssauron-noeval)
 [![GitHub License](https://img.shields.io/github/license/gofunky/cssauron-noeval.svg)](https://github.com/gofunky/cssauron-noeval/blob/master/LICENSE)
 [![GitHub last commit](https://img.shields.io/github/last-commit/gofunky/cssauron-noeval.svg)](https://github.com/gofunky/cssauron-noeval/commits/master)
-
+[![Dependabot Status](https://api.dependabot.com/badges/status?host=github&repo=gofunky/cssauron-noeval)](https://dependabot.com)
 
 build a matching function in CSS for any nested object structure without eval
 
