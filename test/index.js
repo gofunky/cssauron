@@ -1,30 +1,37 @@
-var cssauron = require('../index')
-  , test = require('tape')
-  , language
+const cssauron = require('../index')
+const test = require('tape')
+let language
 
 language = cssauron({
-    id: 'id'
-  , class: 'class'
-  , tag: 'tag'
-  , attr: 'attr[attr]'
-  , parent: 'parent'
-  , children: 'children'
-  , contents: 'contents || ""'
-}, function(type, pattern, data) {
-  if (type == 'tag') {
-    return pattern.toLowerCase() == data.toLowerCase();
+  id: 'id',
+  class: 'class',
+  tag: 'tag',
+  attr: 'attr[attr]',
+  parent: 'parent',
+  children: 'children',
+  contents: 'contents || ""'
+}, function (type, pattern, data) {
+  if (type === 'tag') {
+    return pattern.toLowerCase() === data.toLowerCase()
   } else {
-    return pattern == data;
+    return pattern === data
   }
 })
 
-test('select single', test_select_single)
-test('select classlist', test_select_classlist)
-test('select multiple', test_select_multiple)
-test('select subject', test_select_subject)
+test('select single', testSelectSingle)
+test('select classlist', testSelectClaslist)
+test('select multiple', testSelectMultiple)
+test('select subject', testSelectSubject)
 
-function test_select_single(assert) {
-  var data = {id: 'one-id', class: 'one-class', tag: 'one-tag', attr:{first: 'test', second:'gary busey', third:'richard-m-nixon'}, parent:null, children:[]}
+function testSelectSingle (assert) {
+  const data = {
+    id: 'one-id',
+    class: 'one-class',
+    tag: 'one-tag',
+    attr: { first: 'test', second: 'gary busey', third: 'richard-m-nixon' },
+    parent: null,
+    children: []
+  }
 
   assert.ok(language('#one-id')(data))
   assert.ok(!language('#one-id-false')(data))
@@ -37,30 +44,65 @@ function test_select_single(assert) {
   assert.end()
 }
 
-function test_select_classlist(assert) {
-  var data =  [
+function testSelectClaslist (assert) {
+  const data = [
     { class: 'a-class   b-class  c-class ' },
     { class: ['a-class', 'b-class', 'c-class'] }
   ]
 
-  data.forEach(function(data) {
+  data.forEach(function (data) {
     assert.ok(language('.a-class')(data))
     assert.ok(language('.b-class')(data))
     assert.ok(language('.c-class')(data))
     assert.ok(!language('.one-other-class')(data))
   })
 
-  assert.ok(!language('.whatever')({class: null}))
+  assert.ok(!language('.whatever')({ class: null }))
 
   assert.end()
 }
 
-function test_select_multiple(assert) {
-  var data = {id: 'one-id', class: 'one-class', tag: 'one-tag', attr:{first: 'test', second:'gary busey', third:'richard-m-nixon'}, parent:null, children:[]}
-    , data2 = {id: 'two-id', class: 'two-class', tag: 'two-tag', attr:{first: 'test', second:'gary busey', third:'richard-m-nixon'}, parent:null, children:[]}
-    , data3 = {id: 'three-id', class: 'three-class', tag: 'three-tag', attr:{first: 'test', second:'gary busey', third:'richard-m-nixon'}, parent:null, children:[]}
-    , parent = {id: 'parent-id', class: 'parent-class', tag: 'parent-tag', attr:{first: 'test', second:'gary busey', third:'richard-m-nixon'}, parent:null, children:[data, data2, data3]}
-    , root = {id: 'root-id', class: 'root-class', tag: 'root-tag', attr:{first: 'test', second:'gary busey', third:'richard-m-nixon'}, parent:null, children:[parent]}
+function testSelectMultiple (assert) {
+  const data = {
+    id: 'one-id',
+    class: 'one-class',
+    tag: 'one-tag',
+    attr: { first: 'test', second: 'gary busey', third: 'richard-m-nixon' },
+    parent: null,
+    children: []
+  }
+  const data2 = {
+    id: 'two-id',
+    class: 'two-class',
+    tag: 'two-tag',
+    attr: { first: 'test', second: 'gary busey', third: 'richard-m-nixon' },
+    parent: null,
+    children: []
+  }
+  const data3 = {
+    id: 'three-id',
+    class: 'three-class',
+    tag: 'three-tag',
+    attr: { first: 'test', second: 'gary busey', third: 'richard-m-nixon' },
+    parent: null,
+    children: []
+  }
+  const parent = {
+    id: 'parent-id',
+    class: 'parent-class',
+    tag: 'parent-tag',
+    attr: { first: 'test', second: 'gary busey', third: 'richard-m-nixon' },
+    parent: null,
+    children: [data, data2, data3]
+  }
+  const root = {
+    id: 'root-id',
+    class: 'root-class',
+    tag: 'root-tag',
+    attr: { first: 'test', second: 'gary busey', third: 'richard-m-nixon' },
+    parent: null,
+    children: [parent]
+  }
 
   data.parent = parent
   data2.parent = parent
@@ -74,12 +116,12 @@ function test_select_multiple(assert) {
   assert.ok(!language('#root-id > #one-id')(data))
   assert.ok(language('#root-id > #parent-id > #one-id')(data))
   assert.ok(
-      language('#parent-id > #one-id,\n#root-id > #parent-id > #one-id')(data)
+    language('#parent-id > #one-id,\n#root-id > #parent-id > #one-id')(data)
   )
   assert.ok(
-      language(
-          '#ok,\n    #parent-id > #one-id,\n#root-id > #parent-id > #one-id'
-      )(data)
+    language(
+      '#ok,\n    #parent-id > #one-id,\n#root-id > #parent-id > #one-id'
+    )(data)
   )
   assert.ok(language('.one-class + .two-class')(data2))
   assert.ok(!language('.one-class + #one-id')(data))
@@ -138,18 +180,53 @@ function test_select_multiple(assert) {
   assert.ok(language(':contains(hello)')(data2))
   assert.ok(language(':contains(world)')(data2))
   assert.ok(
-      language(':root > :any(thing-tag, parent-tag, #asdf) > #one-id')(data)
+    language(':root > :any(thing-tag, parent-tag, #asdf) > #one-id')(data)
   )
   assert.end()
 }
 
-function test_select_subject(assert) {
-  var data = {id: 'one-id', class: 'one-class', tag: 'one-tag', attr:{first: 'test', second:'gary busey', third:'richard-m-nixon'}, parent:null, children:[]}
-    , data2 = {id: 'two-id', class: 'two-class', tag: 'two-tag', attr:{first: 'test', second:'gary busey', third:'richard-m-nixon'}, parent:null, children:[]}
-    , data3 = {id: 'three-id', class: 'three-class', tag: 'three-tag', attr:{first: 'test', second:'gary busey', third:'richard-m-nixon'}, parent:null, children:[]}
-    , parent = {id: 'parent-id', class: 'parent-class', tag: 'parent-tag', attr:{first: 'test', second:'gary busey', third:'richard-m-nixon'}, parent:null, children:[data, data2, data3]}
-    , root = {id: 'root-id', class: 'root-class', tag: 'root-tag', attr:{first: 'test', second:'gary busey', third:'richard-m-nixon'}, parent:null, children:[parent]}
-    , res
+function testSelectSubject (assert) {
+  const data = {
+    id: 'one-id',
+    class: 'one-class',
+    tag: 'one-tag',
+    attr: { first: 'test', second: 'gary busey', third: 'richard-m-nixon' },
+    parent: null,
+    children: []
+  }
+  const data2 = {
+    id: 'two-id',
+    class: 'two-class',
+    tag: 'two-tag',
+    attr: { first: 'test', second: 'gary busey', third: 'richard-m-nixon' },
+    parent: null,
+    children: []
+  }
+  const data3 = {
+    id: 'three-id',
+    class: 'three-class',
+    tag: 'three-tag',
+    attr: { first: 'test', second: 'gary busey', third: 'richard-m-nixon' },
+    parent: null,
+    children: []
+  }
+  const parent = {
+    id: 'parent-id',
+    class: 'parent-class',
+    tag: 'parent-tag',
+    attr: { first: 'test', second: 'gary busey', third: 'richard-m-nixon' },
+    parent: null,
+    children: [data, data2, data3]
+  }
+  const root = {
+    id: 'root-id',
+    class: 'root-class',
+    tag: 'root-tag',
+    attr: { first: 'test', second: 'gary busey', third: 'richard-m-nixon' },
+    parent: null,
+    children: [parent]
+  }
+  let res
 
   data.parent = parent
   data2.parent = parent
@@ -158,27 +235,26 @@ function test_select_subject(assert) {
   parent.parent = root
 
   assert.equal(
-      language(':root > :any(thing-tag, parent-tag, #asdf) > #one-id')(data)
+    language(':root > :any(thing-tag, parent-tag, #asdf) > #one-id')(data)
     , data
   )
 
-
   assert.equal(
-      language(':root > !parent-tag > #one-id')(data)
+    language(':root > !parent-tag > #one-id')(data)
     , parent
   )
 
   res = language(
-      ':root > !:any(thing-tag, parent-tag, #asdf) > !#one-id'
+    ':root > !:any(thing-tag, parent-tag, #asdf) > !#one-id'
   )(data)
 
   assert.equal(
-      res[0]
+    res[0]
     , data
   )
 
   assert.equal(
-      res[1]
+    res[1]
     , parent
   )
 
@@ -188,12 +264,12 @@ function test_select_subject(assert) {
   )(data)
 
   assert.equal(
-      res[0]
+    res[0]
     , root
   )
 
   assert.equal(
-      res[1]
+    res[1]
     , data
   )
 

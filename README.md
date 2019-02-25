@@ -1,9 +1,17 @@
-# cssauron
+# cssauron-noeval
 
-build a matching function in CSS for any nested object structure!
+[![NPM version](https://img.shields.io/npm/v/cssauron-noeval.svg)](https://www.npmjs.com/package/cssauron-noeval)
+[![Build](https://travis-ci.com/gofunky/cssauron-noeval.svg?branch=master)](https://travis-ci.com/gofunky/cssauron-noeval)
+[![js-standard-style](https://img.shields.io/badge/code%20style-standard-brightgreen.svg)](http://standardjs.com/)
+[![CodeFactor](https://www.codefactor.io/repository/github/gofunky/cssauron-noeval/badge)](https://www.codefactor.io/repository/github/gofunky/cssauron-noeval)
+[![GitHub License](https://img.shields.io/github/license/gofunky/cssauron-noeval.svg)](https://github.com/gofunky/cssauron-noeval/blob/master/LICENSE)
+[![GitHub last commit](https://img.shields.io/github/last-commit/gofunky/cssauron-noeval.svg)](https://github.com/gofunky/cssauron-noeval/commits/master)
+
+
+build a matching function in CSS for any nested object structure without eval
 
 ```javascript
-var language = require('cssauron')({
+const language = require('cssauron')({
     tag: 'tagName'
   , contents: 'innerText'
   , id: 'id'
@@ -13,7 +21,7 @@ var language = require('cssauron')({
   , attr: 'getAttribute(attr)'
 })
 
-var selector = language('body > #header .logo')
+const selector = language('body > #header .logo')
   , element = document.getElementsByClassName('logo')[0]
 
 if(selector(element)) {

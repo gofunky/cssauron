@@ -1,7 +1,7 @@
 {
-  "name": "cssauron",
+  "name": "cssauron-noeval",
   "version": "1.4.0",
-  "description": "create matching selectors from css for your very own nested object hierarchy",
+  "description": "create matching selectors from css for your very own nested object hierarchy without eval",
   "main": "index.js",
   "directories": {
     "test": "test"
@@ -11,7 +11,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git://github.com/chrisdickinson/cssauron.git"
+    "url": "git://github.com/gofunky/cssauron-noeval.git"
   },
   "keywords": [
     "css",
@@ -22,9 +22,16 @@
   "author": "Chris Dickinson <chris@neversaw.us>",
   "license": "MIT",
   "dependencies": {
-    "through": "X.X.X"
+    "through": "^2.3.8"
   },
   "devDependencies": {
-    "tape": "~2.0.0"
+    "eslint": "^5.14.1",
+    "eslint-config-standard": "^12.0.0",
+    "eslint-plugin-import": "^2.16.0",
+    "eslint-plugin-node": "^8.0.1",
+    "eslint-plugin-promise": "^4.0.1",
+    "eslint-plugin-standard": "^4.0.0",
+    "standard": "^12.0.1",
+    "tape": "^4.10.1"
   }
 }
