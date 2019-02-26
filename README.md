@@ -11,7 +11,7 @@
 build a matching function in CSS for any nested object structure without eval
 
 ```javascript
-const language = require('cssauron')({
+const language = require('cssauron-noeval')({
     tag: 'tagName'
   , contents: 'innerText'
   , id: 'id'
@@ -41,7 +41,7 @@ Delicious with HTML! Digestable with JSON!
 
 # API
 
-### require('cssauron')(options) -> selector factory
+### require('cssauron-noeval')(options) -> selector factory
 
 Import `cssauron` and configure it for the nested object structure you'll
 want to match against.
