@@ -1,0 +1,37 @@
+name: Yarn CI
+
+on: [push]
+
+jobs:
+  build:
+
+    runs-on: ubuntu-latest
+
+    strategy:
+      matrix:
+        node-version: [8.x, 9.x, 10.x, 11.x, 12.x]
+    
+    name: Node ${{ matrix.node-version }}
+
+    steps:
+    - uses: actions/checkout@v1
+    - name: Using Node ${{ matrix.node-version }}
+      uses: actions/setup-node@v1
+      with:
+        node-version: ${{ matrix.node-version }}
+    - name: Caching Node Modules
+      uses: actions/cache@v1
+      with:
+        path: node_modules
+        key: ${{ runner.OS }}-${{ matrix.node-version }}-test-${{ hashFiles('**/yarn.lock') }}
+        restore-keys: |
+          ${{ runner.OS }}-${{ matrix.node-version }}-test-
+          ${{ runner.OS }}-${{ matrix.node-version }}-
+    - name: Installing Dependencies
+      run: yarn install
+      env:
+        CI: true
+    - name: Testing
+      run: yarn test
+      env:
+        CI: true
