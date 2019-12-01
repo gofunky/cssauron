@@ -1,7 +1,7 @@
 # cssauron-noeval
 
 [![NPM version](https://img.shields.io/npm/v/cssauron-noeval.svg)](https://www.npmjs.com/package/cssauron-noeval)
-[![Build](https://travis-ci.com/gofunky/cssauron-noeval.svg?branch=master)](https://travis-ci.com/gofunky/cssauron-noeval)
+[![Actions Status](https://github.com/gofunky/cssauron-noeval/workflows/build/badge.svg)](https://github.com/gofunky/cssauron-noeval/actions)
 [![js-standard-style](https://img.shields.io/badge/code%20style-standard-brightgreen.svg)](http://standardjs.com/)
 [![CodeFactor](https://www.codefactor.io/repository/github/gofunky/cssauron-noeval/badge)](https://www.codefactor.io/repository/github/gofunky/cssauron-noeval)
 [![GitHub License](https://img.shields.io/github/license/gofunky/cssauron-noeval.svg)](https://github.com/gofunky/cssauron-noeval/blob/master/LICENSE)

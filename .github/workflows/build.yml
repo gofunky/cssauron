@@ -1,4 +1,4 @@
-name: yarn test
+name: build
 
 on: [push]
 
@@ -19,10 +19,10 @@ jobs:
       uses: actions/cache@v1
       with:
         path: node_modules
-        key: ${{ runner.OS }}-${{ matrix.node-version }}-test-${{ hashFiles('**/yarn.lock') }}
+        key: ${{ runner.OS }}-build-${{ hashFiles('**/yarn.lock') }}-${{ matrix.node-version }}
         restore-keys: |
-          ${{ runner.OS }}-${{ matrix.node-version }}-test-
-          ${{ runner.OS }}-${{ matrix.node-version }}-
+          ${{ runner.OS }}-build-${{ hashFiles('**/yarn.lock') }}
+          ${{ runner.OS }}-build
     - name: Installing Dependencies
       if: steps.cache-primes.outputs.cache-hit != 'true'
       run: yarn install
