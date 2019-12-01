@@ -8,14 +8,14 @@ jobs:
     strategy:
       matrix:
         node-version: [8.x, 10.x, 11.x, 12.x]
-    name: Node ${{ matrix.node-version }}
+    name: node.js ${{ matrix.node-version }}
     steps:
     - uses: actions/checkout@v1
-    - name: Using Node ${{ matrix.node-version }}
+    - name: setup node.js ${{ matrix.node-version }}
       uses: actions/setup-node@v1
       with:
         node-version: ${{ matrix.node-version }}
-    - name: Caching Node Modules
+    - name: caching node modules
       uses: actions/cache@v1
       with:
         path: node_modules
@@ -23,12 +23,12 @@ jobs:
         restore-keys: |
           ${{ runner.OS }}-build-${{ hashFiles('**/yarn.lock') }}
           ${{ runner.OS }}-build
-    - name: Installing Dependencies
+    - name: installing dependencies
       if: steps.cache-primes.outputs.cache-hit != 'true'
       run: yarn install
       env:
         CI: true
-    - name: Testing
+    - name: running tests
       run: yarn test
       env:
         CI: true
