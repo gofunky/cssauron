@@ -24,6 +24,7 @@ jobs:
           ${{ runner.OS }}-${{ matrix.node-version }}-test-
           ${{ runner.OS }}-${{ matrix.node-version }}-
     - name: Installing Dependencies
+      if: steps.cache-primes.outputs.cache-hit != 'true'
       run: yarn install
       env:
         CI: true
