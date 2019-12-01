@@ -63,7 +63,7 @@ jobs:
       - name: publish
         # workaround until https://github.com/actions/setup-node/issues/67 is solved
         run: |
-          json -I -f package.json -e "this.name=\"@gofunky/cssauron-noeval\""
+          $(yarn bin)/json -I -f package.json -e "this.name=\"@gofunky/cssauron-noeval\""
           $(yarn bin)/npm-deploy-git-tag
         env:
           CI: true
