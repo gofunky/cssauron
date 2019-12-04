@@ -1,0 +1,25 @@
+name: standard js
+
+on:
+  pull_request:
+    paths:
+      - '**.js'
+
+jobs:
+  black:
+    runs-on: ubuntu-latest
+    name: enforce standard js
+    steps:
+      - uses: actions/checkout@v1
+      - name: applying formating
+        uses: docker://jopereyral/standardjs-action
+        with:
+          args: --fix
+      - name: committing changed files
+        uses: stefanzweifel/git-auto-commit-action@v2.4.0
+        with:
+          commit_message: 'chore(style): enforce standard js'
+          branch: ${{ github.head_ref }}
+          file_pattern: '*.js'
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

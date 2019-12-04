@@ -2,7 +2,7 @@
 
 [![NPM version](https://img.shields.io/npm/v/cssauron-noeval.svg)](https://www.npmjs.com/package/cssauron-noeval)
 [![Actions Status](https://github.com/gofunky/cssauron-noeval/workflows/build/badge.svg)](https://github.com/gofunky/cssauron-noeval/actions)
-[![js-standard-style](https://img.shields.io/badge/code%20style-standard-brightgreen.svg)](http://standardjs.com/)
+[![JavaScript Style Guide](https://img.shields.io/badge/code_style-standard-purple.svg)](https://standardjs.com)
 [![CodeFactor](https://www.codefactor.io/repository/github/gofunky/cssauron-noeval/badge)](https://www.codefactor.io/repository/github/gofunky/cssauron-noeval)
 [![GitHub License](https://img.shields.io/github/license/gofunky/cssauron-noeval.svg)](https://github.com/gofunky/cssauron-noeval/blob/master/LICENSE)
 [![GitHub last commit](https://img.shields.io/github/last-commit/gofunky/cssauron-noeval.svg)](https://github.com/gofunky/cssauron-noeval/commits/master)
@@ -31,20 +31,12 @@ if(selector(element)) {
 }
 ```
 
-It's easy to use with your favorite nested tree structures!
-Delicious with HTML! Digestable with JSON!
-
-| HTML | JSON | GLSL AST | JS AST (Esprima) |
-|------|------|----------|------------------------|
-| [cssauron-html](http://npm.im/cssauron-html) | [cssauron-json](http://npm.im/cssauron-json) | [cssauron-glsl](http://npm.im/cssauron-glsl) | [cssauron-falafel](http://npm.im/cssauron-falafel) |
-
-
-# API
+## API
 
 ### require('cssauron-noeval')(options) -> selector factory
 
-Import `cssauron` and configure it for the nested object structure you'll
-want to match against.
+Import `cssauron-noeval` and configure it for the nested object structure against that you
+want to match.
 
 #### options
 
@@ -110,5 +102,3 @@ Checking the following selectors against the `span.jake-busey` element yields:
  - `[attr*=value]`: Attribute contains value
  - `[attr~=value]`: Attribute, split by whitespace, contains value.
  - `[attr|=value]`: Attribute, split by `-`, contains value.
-
-
