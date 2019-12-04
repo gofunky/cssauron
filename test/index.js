@@ -61,8 +61,7 @@ function testSelectClassList (assert) {
   assert.end()
 }
 
-function testSelectMultiple (assert)
-{
+function testSelectMultiple (assert) {
   const data = {
     id: 'one-id',
     class: 'one-class',
