@@ -18,7 +18,7 @@ jobs:
       - name: installing standard js
         run: npm install standard --save-dev
       - name: applying standard code style
-        run: $(yarn bin)/standard --fix
+        run: npx standard --fix
       - name: committing changed files
         uses: stefanzweifel/git-auto-commit-action@v2.4.0
         with:
