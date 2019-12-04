@@ -1,8 +1,7 @@
 const cssauron = require('../index')
 const test = require('tape')
-let language
 
-language = cssauron({
+const language = cssauron({
   id: 'id',
   class: 'class',
   tag: 'tag',
@@ -19,7 +18,7 @@ language = cssauron({
 })
 
 test('select single', testSelectSingle)
-test('select classlist', testSelectClaslist)
+test('select classlist', testSelectClassList)
 test('select multiple', testSelectMultiple)
 test('select subject', testSelectSubject)
 
@@ -44,7 +43,7 @@ function testSelectSingle (assert) {
   assert.end()
 }
 
-function testSelectClaslist (assert) {
+function testSelectClassList (assert) {
   const data = [
     { class: 'a-class   b-class  c-class ' },
     { class: ['a-class', 'b-class', 'c-class'] }

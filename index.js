@@ -11,7 +11,7 @@ function language (lookups, matchComparison) {
 
 function remap (opts) {
   for (const key in opts) {
-    if (optOkay(opts, key)) {
+    if (Object.prototype.hasOwnProperty.call(opts, key) && typeof opts[key] === 'string') {
       const property = opts[key]
       opts[key] = function (node, attr) {
         return getProp(node, property, attr)
@@ -38,19 +38,14 @@ function getProp (obj, prop, attr) {
   return resultProperty || fallback
 }
 
-function optOkay (opts, key) {
-  return opts.hasOwnProperty(key) && typeof opts[key] === 'string'
-}
-
 function parse (selector, options, matchComparison) {
   const stream = tokenizer()
   const selectors = [[]]
-  let traversal
   let bits
 
   bits = selectors[0]
 
-  traversal = {
+  const traversal = {
     '': anyParents,
     '>': directParent,
     '+': directSibling,
@@ -62,8 +57,6 @@ function parse (selector, options, matchComparison) {
     .end(selector)
 
   function group (token) {
-    let crnt
-
     if (token.type === 'comma') {
       selectors.unshift(bits = [])
 
@@ -78,7 +71,7 @@ function parse (selector, options, matchComparison) {
     }
 
     bits[0] = bits[0] || check()
-    crnt = bits[0]
+    const crnt = bits[0]
 
     if (token.type === '!') {
       crnt.subject =
@@ -101,12 +94,10 @@ function parse (selector, options, matchComparison) {
   function selectorFn (node, asBoolean) {
     let current,
       length,
-      orig,
-      subj,
-      set
+      subj
 
-    orig = node
-    set = []
+    const orig = node
+    const set = []
 
     let i = 0
     const len = selectors.length
@@ -229,9 +220,8 @@ function parse (selector, options, matchComparison) {
   function directSibling (node, next, subj) {
     const parent = options.parent(node)
     let idx = 0
-    let children
 
-    children = options.children(parent)
+    const children = options.children(parent)
 
     let i = 0
     const len = children.length
@@ -250,9 +240,8 @@ function parse (selector, options, matchComparison) {
 
   function anySibling (node, next, subj) {
     const parent = options.parent(node)
-    let children
 
-    children = options.children(parent)
+    const children = options.children(parent)
 
     let i = 0
     const len = children.length
@@ -325,8 +314,8 @@ function validAnyMatch (options, selector, matchComparison) {
   return parse(selector, options, matchComparison)
 }
 
-const checkattr = {
-  '$': checkEnd,
+const checkAttributes = {
+  $: checkEnd,
   '^': checkBeg,
   '*': checkAny,
   '~': checkSpc,
@@ -345,11 +334,11 @@ function validAttr (fn, lhs, cmp, rhs) {
       return attr === rhs
     }
 
-    if (attr === void 0 || attr === null) {
+    if (attr === undefined || attr === null) {
       return false
     }
 
-    return checkattr[cmp.charAt(0)](attr, rhs)
+    return checkAttributes[cmp.charAt(0)](attr, rhs)
   }
 }
 
@@ -386,7 +375,7 @@ function validContains (options, contents) {
 }
 
 function ValidNthChild (options, nth) {
-  let test = function (children, node) {
+  let test = function (..._) {
     return false
   }
   if (nth === 'odd') {
@@ -394,7 +383,7 @@ function ValidNthChild (options, nth) {
   } else if (nth === 'even') {
     nth = '2n'
   }
-  const regexp = /( ?([-|+])?(\d*)n)? ?((\+|-)? ?(\d+))? ?/
+  const regexp = /( ?([-|+])?(\d*)n)? ?(([+-])? ?(\d+))? ?/
   const matches = nth.match(regexp)
   if (matches) {
     let growth = 0
