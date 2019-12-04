@@ -15,10 +15,12 @@ jobs:
         uses: actions/setup-node@v1
         with:
           node-version: 12
-      - name: installing standard js
-        run: npm install standard --save-dev
+      - name: installing dependencies
+        run: yarn install
+        env:
+          CI: true
       - name: applying standard code style
-        run: npx standard --fix
+        run: $(yarn bin)/standard --fix
       - name: committing changed files
         uses: stefanzweifel/git-auto-commit-action@v2.4.0
         with:
