@@ -59,7 +59,7 @@ jobs:
       - name: installing dependencies
         run: yarn install
         env:
-          CI: true 
+          CI: true
       - name: publish
         # workaround until https://github.com/actions/setup-node/issues/67 is solved
         run: |
