@@ -16,9 +16,9 @@ jobs:
         with:
           node-version: 12
       - name: installing standard js
-        run: yarn global add standard
+        run: npm install standard --save-dev
       - name: applying standard code style
-        run: standard --fix
+        run: $(yarn bin)/standard --fix
       - name: committing changed files
         uses: stefanzweifel/git-auto-commit-action@v2.4.0
         with:
