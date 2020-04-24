@@ -37,7 +37,7 @@
     "eslint-plugin-standard": "^4.0.0",
     "json": "^9.0.6",
     "standard": "^14.3.3",
-    "tape": "^4.13.2"
+    "tape": "^5.0.0"
   },
   "engine": {
     "node": ">=0.8"
