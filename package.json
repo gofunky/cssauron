@@ -40,7 +40,7 @@
     "eslint-plugin-standard": "4.0.1",
     "json": "9.0.6",
     "standard": "14.3.4",
-    "tape": "4.13.3",
+    "tape": "5.0.1",
     "nyc": "15.1.0",
     "tap-nyc": "1.0.3"
   },
