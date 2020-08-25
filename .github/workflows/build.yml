@@ -3,7 +3,7 @@ name: build
 on:
   push:
     branches: [ master ]
-  pull_request:
+  pull_request_target:
     branches: [ master ]
 
 jobs:
@@ -19,6 +19,9 @@ jobs:
     name: node.js ${{ matrix.node-version }}
     steps:
       - uses: actions/checkout@v2.3.2
+        with:
+          ref: ${{ github.head_ref }}
+          repository: ${{ github.event.pull_request.head.repo.full_name }}
       - name: setup node.js ${{ matrix.node-version }}
         uses: actions/setup-node@v2.1.1
         with:
