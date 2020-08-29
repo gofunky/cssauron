@@ -50,7 +50,7 @@
     "tap-nyc": "1.0.3",
     "tap-spec": "5.0.0"
   },
-  "engine": {
+  "engines": {
     "node": ">= 12.18.3 < 15"
   },
   "publishConfig": {
