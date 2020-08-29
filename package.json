@@ -1,5 +1,5 @@
 {
-  "name": "cssauron-noeval",
+  "name": "@gofunky/cssauron",
   "description": "build a matching function in CSS for any nested object structure without eval",
   "type": "module",
   "exports": {
