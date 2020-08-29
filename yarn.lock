@@ -436,7 +436,7 @@ available-typed-arrays@^1.0.0, available-typed-arrays@^1.0.2:
   dependencies:
     array-filter "^1.0.0"
 
-babel-eslint@^10.1.0:
+babel-eslint@10.1.0:
   version "10.1.0"
   resolved "https://registry.yarnpkg.com/babel-eslint/-/babel-eslint-10.1.0.tgz#6968e568a910b78fb3779cdd8b6ac2f479943232"
   integrity sha512-ifWaTHQ0ce+448CYop8AdrQiBsGrnC+bMgfyKFdi6EsPLTAWG+QfyDeM6OH+FmWnKvEq5NnBMLvlBUPKQZoDSg==
@@ -2955,7 +2955,7 @@ stubs@^3.0.0:
   resolved "https://registry.yarnpkg.com/stubs/-/stubs-3.0.0.tgz#e8d2ba1fa9c90570303c030b6900f7d5f89abe5b"
   integrity sha1-6NK6H6nJBXAwPAMLaQD31fiavls=
 
-supertape@^2.0.1:
+supertape@2.0.1:
   version "2.0.1"
   resolved "https://registry.yarnpkg.com/supertape/-/supertape-2.0.1.tgz#6c0366f3fe3c49f20215a7cd5abe57d84859ef51"
   integrity sha512-Zr6h3942JCnxqOdwjb9whx0Sw8T2Senb9497Zr3hZfVFMmmXNHrzqO1fKv7stVXuk3AOdFzzLmZDxlOJY76zXA==
@@ -3034,7 +3034,7 @@ tap-out@^2.1.0:
     split "1.0.0"
     trim "0.0.1"
 
-tap-spec@^5.0.0:
+tap-spec@5.0.0:
   version "5.0.0"
   resolved "https://registry.yarnpkg.com/tap-spec/-/tap-spec-5.0.0.tgz#7329e4e66e8aa68da2a164215abbb903a7c5d352"
   integrity sha512-zMDVJiE5I6Y4XGjlueGXJIX2YIkbDN44broZlnypT38Hj/czfOXrszHNNJBF/DXR8n+x6gbfSx68x04kIEHdrw==
