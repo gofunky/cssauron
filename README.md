@@ -15,19 +15,32 @@
 
 build a matching function in CSS for any nested object structure without eval
 
-```javascript
-const language = require('cssauron-noeval')({
-    tag: 'tagName'
-  , contents: 'innerText'
-  , id: 'id'
-  , class: 'className'
-  , parent: 'parentNode'
-  , children: 'childNodes'
-  , attr: 'getAttribute(attr)'
+## Usage
+
+### Import
+
+#### Common JS
+
+From version `v2.0.0`, cssauron will only support ES6 modules.
+In order to import cssauron with NodeJS versions prior v12, you may use [esm](https://github.com/standard-things/esm).
+
+#### Import default
+
+```js
+import cssauron from '@gofunky/cssauron'
+
+const language = cssauron({
+  tag: 'tagName',
+  contents: 'innerText',
+  id: 'id',
+  class: 'className',
+  parent: 'parentNode',
+  children: 'childNodes',
+  attr: 'getAttribute(attr)'
 })
 
 const selector = language('body > #header .logo')
-  , element = document.getElementsByClassName('logo')[0]
+const element = document.getElementsByClassName('logo')[0]
 
 if(selector(element)) {
   // element matches selector
@@ -36,14 +49,16 @@ if(selector(element)) {
 }
 ```
 
-## API
+#### Import as class
 
-### require('cssauron-noeval')(options) -> selector factory
+```js
+import { CSSAuron } from '@gofunky/cssauron'
 
-Import `cssauron-noeval` and configure it for the nested object structure against that you
-want to match.
+const language = new CSSAuron({})
+const selector = language.parse('body > #header .logo')
+```
 
-#### options
+### Constructor options
 
 `options` are an object hash of lookup type to string attribute or `function(node)` lookups for queried
 nodes. You only need to provide the configuration necessary for the selectors you're planning on creating.
@@ -57,19 +72,20 @@ nodes. You only need to provide the configuration necessary for the selectors yo
 * `children`: Used to traverse from a parent to its children for sibling selectors `div + span`, `a ~ p`.
 * `attr`: Used to extract attribute information, for `[attr=thing]` style selectors.
 
-### selector_factory('some selector') -> match function
+### `language('some selector')` -> match function
 
 Compiles a matching function.
 
-### match(node) -> false | node | [subjects, ...]
+### `match(node)` -> false | node | [subjects, ...]
 
-Returns false if the provided node does not match the selector. Returns truthy if the provided
-node *does* match. Exact return value is determined by the selector, based on
-the [CSS4 subject selector spec](http://dev.w3.org/csswg/selectors4/#subject): if only
-a single node is matched, only that node is returned. If multiple subjects are matched,
-a deduplicated array of those subjects are returned.
+Returns `false` if the provided node does not match the selector.
+Returns `true` if the provided node *does* match.
+The exact return value is determined by the selector, based on the 
+[CSS4 subject selector spec](http://dev.w3.org/csswg/selectors4/#subject):
+If only a single node matches, only this node is returned.
+If multiple subjects match, a deduplicated array of those subjects is returned.
 
-For example, given the following HTML (and `cssauron-html`):
+For example, given the following HTML:
 
 ```html
 <div id="gary-busey">
@@ -80,7 +96,7 @@ For example, given the following HTML (and `cssauron-html`):
 </div>
 ```
 
-Checking the following selectors against the `span.jake-busey` element yields:
+Checking the following selectors against the `span.jake-busey` element yield:
 
  - `#gary-busey`: `false`, no match.
  - `#gary-busey *`: `span.jake-busey`, a single match.
@@ -88,7 +104,7 @@ Checking the following selectors against the `span.jake-busey` element yields:
  - `#gary-busey *, p span`: `span.jake-busey`, a single match, though both selectors match.
  - `#gary-busey !* !*, !p > !span`: `[p, span.jake-busey]`, two matches.
 
-## Supported pseudoclasses 
+## Supported pseudo-classes 
 
  - `:first-child`
  - `:last-child`

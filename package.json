@@ -1,36 +1,42 @@
 {
   "name": "cssauron-noeval",
-  "description": "create matching selectors from css for your very own nested object hierarchy without eval",
-  "main": "index.js",
-  "directories": {
-    "test": "test"
+  "description": "build a matching function in CSS for any nested object structure without eval",
+  "type": "module",
+  "exports": {
+    "import": "./lib/index.mjs"
   },
+  "module": "./lib/index.mjs",
   "scripts": {
-    "test": "node test/index.js",
-    "coverage": "nyc --reporter=lcov tape test/*.js | tap-nyc",
-    "report": "nyc report --reporter=html"
+    "test": "node --experimental-modules --experimental-specifier-resolution=node test/index.mjs | tap-spec",
+    "coverage": "nyc --reporter=lcov node --experimental-modules --experimental-specifier-resolution=node test/index.mjs | tap-nyc",
+    "report": "nyc report --reporter=html",
+    "lint": "eslint",
+    "publish": "npm-deploy-git-tag"
   },
   "repository": {
     "type": "git",
-    "url": "git://github.com/gofunky/cssauron-noeval.git"
+    "url": "git://github.com/gofunky/cssauron.git"
   },
   "keywords": [
     "css",
     "selector",
     "parser",
-    "match"
+    "match",
+    "stream",
+    "parser",
+    "transform",
+    "library"
   ],
   "author": {
     "name": "matfax",
     "email": "mat@fax.fyi",
-    "url": "https://github.com/gofunky/cssauron-noeval"
+    "url": "https://github.com/gofunky/cssauron"
   },
   "license": "MIT",
-  "dependencies": {
-    "through": "^2.3.8"
-  },
+  "dependencies": {},
   "devDependencies": {
     "@hutson/npm-deploy-git-tag": "6.0.0",
+    "babel-eslint": "^10.1.0",
     "codecov": "3.7.2",
     "eslint": "7.7.0",
     "eslint-config-standard": "14.1.1",
@@ -38,16 +44,19 @@
     "eslint-plugin-node": "11.1.0",
     "eslint-plugin-promise": "4.2.1",
     "eslint-plugin-standard": "4.0.1",
-    "json": "9.0.6",
-    "standard": "14.3.4",
-    "tape": "4.13.3",
     "nyc": "15.1.0",
-    "tap-nyc": "1.0.3"
+    "standard": "14.3.4",
+    "supertape": "^2.0.1",
+    "tap-nyc": "1.0.3",
+    "tap-spec": "^5.0.0"
   },
   "engine": {
-    "node": ">= 10.13.0 <15"
+    "node": ">= 12.18.3 < 15"
   },
   "publishConfig": {
     "access": "public"
+  },
+  "standard": {
+    "parser": "babel-eslint"
   }
 }
