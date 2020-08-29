@@ -1,17 +1,17 @@
-# cssauron-noeval
+# cssauron
 
-[![GitHub Workflow Status (branch)](https://img.shields.io/github/workflow/status/gofunky/cssauron-noeval/build/master?style=for-the-badge)](https://github.com/gofunky/cssauron-noeval/actions)
-[![Codecov](https://img.shields.io/codecov/c/github/gofunky/cssauron-noeval?style=for-the-badge)](https://codecov.io/gh/gofunky/cssauron-noeval)
-[![Renovate Status](https://img.shields.io/badge/renovate-enabled-green?style=for-the-badge&logo=renovatebot&color=1a1f6c)](https://app.renovatebot.com/dashboard#github/gofunky/cssauron-noeval)
-[![Libraries.io dependency status for latest release](https://img.shields.io/librariesio/release/npm/cssauron-noeval?style=for-the-badge)](https://libraries.io/npm/cssauron-noeval)
-[![Snyk Vulnerabilities for npm package](https://img.shields.io/snyk/vulnerabilities/npm/cssauron-noeval?style=for-the-badge)](https://snyk.io/test/github/gofunky/cssauron-noeval)
+[![GitHub Workflow Status (branch)](https://img.shields.io/github/workflow/status/gofunky/cssauron/build/master?style=for-the-badge)](https://github.com/gofunky/cssauron/actions)
+[![Codecov](https://img.shields.io/codecov/c/github/gofunky/cssauron?style=for-the-badge)](https://codecov.io/gh/gofunky/cssauron)
+[![Renovate Status](https://img.shields.io/badge/renovate-enabled-green?style=for-the-badge&logo=renovatebot&color=1a1f6c)](https://app.renovatebot.com/dashboard#github/gofunky/cssauron)
+[![Libraries.io dependency status for latest release](https://img.shields.io/librariesio/release/npm/@gofunky%2Fcssauron?style=for-the-badge)](https://libraries.io/npm/@gofunky%2Fcssauron)
+[![Snyk Vulnerabilities for npm package](https://img.shields.io/snyk/vulnerabilities/npm/@gofunky/cssauron?style=for-the-badge)](https://snyk.io/test/github/gofunky/cssauron)
 [![JavaScript Style Guide](https://img.shields.io/badge/code_style-standard-purple.svg?style=for-the-badge)](https://standardjs.com)
-[![CodeFactor](https://www.codefactor.io/repository/github/gofunky/cssauron-noeval/badge?style=for-the-badge)](https://www.codefactor.io/repository/github/gofunky/cssauron-noeval)
-[![node-current](https://img.shields.io/node/v/cssauron-noeval?style=for-the-badge)](https://www.npmjs.com/package/cssauron-noeval)
-[![NPM version](https://img.shields.io/npm/v/cssauron-noeval.svg?style=for-the-badge)](https://www.npmjs.com/package/cssauron-noeval)
-[![NPM Downloads](https://img.shields.io/npm/dm/cssauron-noeval?style=for-the-badge&color=ff69b4)](https://www.npmjs.com/package/cssauron-noeval)
-[![GitHub License](https://img.shields.io/github/license/gofunky/cssauron-noeval.svg?style=for-the-badge)](https://github.com/gofunky/cssauron-noeval/blob/master/LICENSE)
-[![GitHub last commit](https://img.shields.io/github/last-commit/gofunky/cssauron-noeval.svg?style=for-the-badge&color=9cf)](https://github.com/gofunky/cssauron-noeval/commits/master)
+[![CodeFactor](https://www.codefactor.io/repository/github/gofunky/cssauron/badge?style=for-the-badge)](https://www.codefactor.io/repository/github/gofunky/cssauron)
+[![node-current](https://img.shields.io/node/v/@gofunky/cssauron?style=for-the-badge)](https://www.npmjs.com/package/@gofunky/cssauron)
+[![NPM version](https://img.shields.io/npm/v/@gofunky/cssauron.svg?style=for-the-badge)](https://www.npmjs.com/package/@gofunky/cssauron)
+[![NPM Downloads](https://img.shields.io/npm/dm/@gofunky/cssauron?style=for-the-badge&color=ff69b4)](https://www.npmjs.com/package/@gofunky/cssauron)
+[![GitHub License](https://img.shields.io/github/license/gofunky/cssauron.svg?style=for-the-badge)](https://github.com/gofunky/cssauron/blob/master/LICENSE)
+[![GitHub last commit](https://img.shields.io/github/last-commit/gofunky/cssauron.svg?style=for-the-badge&color=9cf)](https://github.com/gofunky/cssauron/commits/master)
 
 build a matching function in CSS for any nested object structure without eval
 
