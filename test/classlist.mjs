@@ -1,7 +1,5 @@
 import test from 'supertape'
-import { one, parent, TestCase, testLang, three, two } from './shared'
-
-
+import { TestCase, testLang } from './shared'
 
 export default (lang) => {
   test('select class list', async (assert) => {
