@@ -10,8 +10,7 @@
     "test": "node --experimental-modules --experimental-specifier-resolution=node test/index.mjs | tap-spec",
     "coverage": "nyc --reporter=lcov node --experimental-modules --experimental-specifier-resolution=node test/index.mjs | tap-nyc",
     "report": "nyc report --reporter=html",
-    "lint": "standard",
-    "publish": "npm-deploy-git-tag"
+    "lint": "standard"
   },
   "repository": {
     "type": "git",
@@ -35,7 +34,6 @@
   "license": "MIT",
   "dependencies": {},
   "devDependencies": {
-    "@hutson/npm-deploy-git-tag": "6.0.0",
     "babel-eslint": "10.1.0",
     "codecov": "3.7.2",
     "eslint": "7.7.0",
