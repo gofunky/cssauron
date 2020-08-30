@@ -80,7 +80,7 @@ jobs:
         env:
           CI: true
       - name: publish
-        run: yarn publish --new-version "${{ github.ref }}"
+        run: yarn publish --new-version "${{ github.event.release.tag_name }}"
         env:
           CI: true
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
@@ -117,7 +117,7 @@ jobs:
         env:
           CI: true
       - name: publish
-        run: yarn publish --new-version "${{ github.ref }}"
+        run: yarn publish --new-version "${{ github.event.release.tag_name }}"
         env:
           CI: true
           NODE_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
